@@ -1,0 +1,64 @@
+{% extends "common/layout.html" %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+
+<div class="elfsight-app-dd44629c-55e1-4aa0-901c-d604eb3cd9c5"></div>
+
+<div
+  style="z-index: 9999;position:fixed;top:50px;width:90%; text-align: center;margin-top: 20px; margin-left:5%;margin-right:5%;"
+  class="alert alert-danger alert-dismissible" role="alert" id="alarmdivi">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container girisYazisi">
+  <div class="jumbotron  d-flex align-items-center"
+    style="margin-top: 10%; margin-bottom:9.5%; height: 65%; text-align: center;">
+    <div>
+      <br><br>
+      <h1>Güvenli Sürüş'e Hoş Geldiniz</h1><br><br><br>
+      <p>Bu sayfada sürücüler olarak gündelik hayatta karşılaştığınız hatalarda diğer kullanıcılarında karşılaşmaması
+        için
+        onlara uyarı niteliğinde olacak anketler doldurarak kaza faktörünü en aza indirgeyebilirisinz</p>
+      <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .girisYazisi {
+    margin-bottom: 200px;
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+
+    setTimeout(function () {
+
+      $("#alarmdivi").fadeOut("slow", function () {
+
+        $("#alarmdivi").remove();
+
+      });
+
+    }, 2000);
+
+  });
+</script>
+
+{% endblock %}

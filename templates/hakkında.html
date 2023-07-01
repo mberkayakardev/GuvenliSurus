@@ -1,0 +1,75 @@
+{% extends "common/layout.html" %}
+{% load static %}
+{% block content %}
+    
+<style>
+ 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.kart {
+  width: 60%;
+  height: 20%;
+  overflow: hidden;
+  margin: 60px auto;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+h3 {
+  font-weight: bold;
+  font-family: sans-serif;
+  color: green;
+  margin-bottom: 0px;
+  font-size: 1.7em;
+}
+p {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.kart img {
+  width: 100%;
+  height: 50%;
+  z-index: -1;
+  transition: all .5s ease;
+  position: relative;
+}
+
+.kart:hover img {
+  transform: scale(1.1);
+  
+}
+.kart:hover::after {
+  bottom: 313px;
+  opacity: 1;
+  transition: all .5s ease;
+}
+ 
+.tekst {
+  margin-bottom: 100px;
+  background: darkgrey;
+  margin-top: -5px;
+  z-index: 0;
+  position: relative;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+}
+</style>
+ 
+<div class="kart" data-reci="About us...">
+  <img src="{% static 'logo.png'%}"  />
+  <div class="tekst">
+    <h3>Güvenli Sürüş</h3>
+  <p>Ülkemiz karayollarında ne kadar önlem alınsa bile bağzı sorunlardan kaynaklı olarak çeşitli yollarda önüne geçilemez sorunlar doğrumakta ve sonucunda istenmeyen can ve mal kayıpları ile sonuçlanmaktadır. 
+     Bu uygulama sürücülerin bir noktadan başka bir noktaya ulaşması konusunda kullanıcı her bir bireye yardımcı olmak ve kullanıcıların bilgilendirmeleri ile diğer kullanıcılara olası doğabilecek sorunlar konusunda ön
+      bilgi vermektir </p>
+  </div>
+</div>
+  
+{% endblock %}

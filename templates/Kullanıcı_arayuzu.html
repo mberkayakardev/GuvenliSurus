@@ -1,0 +1,83 @@
+{% extends "common/layout.html" %}
+{% load static %}
+{% block content %}
+<style>
+  .card {
+    margin-top: 50px;
+  }
+
+  #map {
+    height: 100%;
+  }
+
+  .card {
+    background-color: transparent;
+    border: none;
+  }
+
+  /* Optional: Makes the sample page fill the window. */
+</style>
+<div class="container">
+  <div class="py-5 text-center">
+
+    <h2>Kullanıcı Paneli </h2>
+    <p class="lead"> Hoşgeldin {{request.user.first_name}}</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <!-- ilk satır                 -->
+      <div class="card  pb-3 text-center">
+        <h2 class="card-title text-center">Bildirim Yönetimi </h2>
+        <img class="card-img-top" src="{% static 'anket.png' '%}" alt="Anket Fotosu">
+        <div class="card-body" style="height: 100px;">
+          <p class="card-text text-center">Bildirim oluşturma, görüntüleme, güncelleme ve ekleme işlemleri için</p>
+        </div>
+        <a href="/anket/anketyonetimi" class="btn btn-sm btn-success  btn-lg btn-block">İşlemler </a>
+      </div>
+
+    </div>
+    <div class=" col-md-6 ">
+      <div class="card  pb-3 text-center">
+        <h2 class="card-title text-center">Kişisel Bilgiler </h2>
+        <img class="card-img-top" src="{% static 'kisisel.png' '%}" alt="Anket Fotosu">
+        <div class="card-body" style="height: 100px;">
+          <p class="card-text text-center">Bilgilerinizi güncelleyebileceğiniz, görüntüleyebileceğiniz ve üyeliğinizi
+            sonlandırabileceğiniz sayfalar için.</p>
+        </div>
+        <a href="/user/kisisel/" class="btn btn-sm btn-success btn-lg btn-block ">İşlemler </a>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class=" col-md-12">
+      <div class="card  pb-3 text-center">
+        <h2 class="card-title text-center">Navigasyon</h2>
+
+        <a href="/../navigasyon/"><div id="map" style=" height: 450px;"></div></a>
+
+        <div class="card-body">
+
+          <p class="card-text text-center">Güvenli bir yolculuğa başlamak isterseniz doğru adrestesiniz</p>
+          <a href="/../navigasyon/" class="btn btn-sm btn-success btn-lg btn-block  ">İşlemler </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjDCtgyoBK9Qj8Cb6G9AlnhkDJPQw-dGw&libraries=&v=weekly"
+  defer></script>
+<script src="{% static 'harita.js' %}" defer></script>
+
+
+{% endblock %}

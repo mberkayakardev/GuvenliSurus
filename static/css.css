@@ -1,0 +1,303 @@
+body {
+    background-color: #93BFA3;
+}
+
+/* Clearfix */
+.row {
+    position: relative;
+}
+
+
+
+.container .main {
+    width: 65vw;
+    border-radius: 1rem;
+    background-color: #fff;
+    padding: 2rem;
+
+    height: 96vh;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-size: cover;
+    background-position: top;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #000;
+    box-sizing: border-box;
+    margin: auto;
+    padding-top: 10px;
+}
+
+.location-label {
+    font-size: 1.6rem;
+    float: left;
+    width: 25%;
+    margin-top: .6rem;
+}
+
+.location-input {
+    float: left;
+    width: 75%;
+    margin-top: .6rem;
+}
+
+.location-input::-webkit-input-placeholder {
+    color: #465caa;
+}
+
+::-moz-placeholder {
+    color: #465caa;
+}
+
+::-ms-placeholder {
+    color: #465caa;
+}
+
+::placeholder {
+    color: #465caa;
+}
+
+.button {
+    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: none;
+    color: white;
+    padding: 1.2rem 2.2rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: ease-in-out .1s;
+}
+
+.button:hover {
+    background-image: linear-gradient(-225deg, #298359 0%, #219078 52%, #1ea040 100%);
+    transform: scale(1.015);
+    transition: ease-in .1s;
+}
+
+.result-table {
+    font-size: 1.6rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    height: 7rem;
+
+    /* Animation */
+    animation-name: moveIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+.container-map {
+    width: 100%;
+    height: 38rem;
+    margin: 1rem auto;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 1.6rem;
+    color: white;
+}
+
+.footer a {
+    font-size: 1.6rem;
+    color: #465caa;
+    text-decoration: none;
+}
+
+/* Animations */
+@keyframes moveIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-.5rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+/*////////////////////////////////////////////*/
+
+/* Animation Styles */
+
+.visitor,
+.operator {
+    bottom: 0;
+    opacity: 1;
+}
+
+.visually-hidden {
+    bottom: -20px;
+    opacity: 0;
+}
+
+.kaza-window>div {
+    transition: all ease-in .3s
+}
+
+.kaza-container,
+.kaza-window,
+.visually-hidden {
+    transition: all ease-in .3s;
+}
+
+.visually-hidden {
+    opacity: 0;
+}
+
+/* End Animation Styles */
+.kaza-window {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.kaza-input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.kaza-input>button {
+    text-align: center;
+}
+
+.kaza-container {
+    z-index: 99;
+    position: fixed;
+    bottom: -200px;
+    width:100%;
+}
+
+.kaza-header {
+    background-color: #007cbe;
+    box-shadow: 0 2px 22px 0px rgba(0, 0, 0, 0.16);
+}
+
+.icon {
+    display: none;
+}
+
+.expand .icon {
+    display: block;
+}
+
+.kaza-header .first {
+    float: left;
+}
+
+.kaza-header .second {
+    float: right;
+}
+
+.kaza-btn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    height: 40px !important;
+    border-radius: 4px 4px 0px 0px;
+    background-color: #007bbe;
+    border-bottom: none;
+    border: 0;
+    font-weight: bold;
+    box-shadow: 0 2px 22px 0px rgba(0, 0, 0, 0.16);
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+.kaza-window li{
+    margin-bottom: 5px;
+}
+.kaza-liste {
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #4f83a0;
+    border: 0;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 75px;
+    padding: 0;
+}
+
+.expand.kaza-container {
+    bottom: 0px;
+}
+
+.kaza-window {
+    width: 100%;
+    border: 1px solid red;
+    height: 200px;
+}
+
+.expand .kaza-window {
+    width: 100%;
+}
+
+.expand .toggleButton {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.kaza-window {
+    background-color: #6285cf;
+    overflow-y: scroll;
+}
+
+.visitor {
+    display: block;
+    text-align: right;
+    font-family: helvetica neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #555555;
+    background-color: #EEF7FB;
+    position: relative;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    float: right;
+    margin: 0px 15px 15px 15px;
+    word-wrap: break-word;
+    width: auto;
+    max-width: 80%;
+    clear: both;
+}
+
+.operator {
+    display: block;
+    font-family: helvetica neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    position: relative;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: #FFFFFF;
+    background-color: #007CBE;
+    float: left;
+    text-align: left;
+    word-wrap: break-word;
+    width: auto;
+    max-width: 80%;
+    margin: 0px 5px 15px 15px;
+    clear: both;
+}

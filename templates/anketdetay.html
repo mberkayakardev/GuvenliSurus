@@ -1,0 +1,180 @@
+{% extends "common/layout.html" %}
+
+{% block content %}
+
+{% if messages %}
+ 
+ 
+<div
+  style="z-index: 9999;position:fixed;top:50px;width:90%; text-align: center;margin-top: 20px; margin-left:5%;margin-right:5%;"
+  class="alert alert-danger alert-dismissible" role="alert" id="alarmdivi">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+  {{message}}
+</div>
+
+
+ 
+{% endif %}
+
+<br>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Bildirim detay sayfası</h1>
+    <p>Burada bildirim daha detaylı görebilirsiniz</p>
+    <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
+    <h1></h1>
+  </div>
+
+ 
+ 
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  #id_alinabilecek_onlem{
+    width: 100% !important;
+  
+  }
+    .container {
+      max-width: 960px;
+    }
+
+    .lh-condensed { line-height: 1.25; }
+
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+
+    }
+
+    textarea{
+      resize: none;
+    }
+  
+  </style>
+
+
+ 
+ 
+ 
+  <div class="container">
+<div class="py-5 text-center">
+ 
+  <h2>Detay Sayfası </h2>
+
+</div>
+
+<div class="row ">
+  
+  <div class="col-md-12 ">
+    
+    <form class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName">Kullanıcı adı</label>
+          <input type="text" class="form-control" id="firstName" placeholder="" value="{{newAnket.author}}" required readonly>
+        
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Oluşturulma Tarihi</label>
+          <input type="text" class="form-control" id="lastName" placeholder="" value="{{newAnket.tarih}}" required readonly>
+         
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="Enlem bilgisi">Enlem bilgisi</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">N°/S°</span>
+            </div>
+            <input type="text" class="form-control" id="enlem" placeholder="enlem" value="{{newAnket.enlem}}"  readonly>
+          </div>
+        
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Boylam bilgisi</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">λ</span>
+            </div>
+            <input type="text" class="form-control" id="boylam" placeholder="boylam" value="{{newAnket.boylam}}"  readonly>
+          </div>
+        </div>
+      </div>
+      
+ 
+
+      
+       
+
+          <!-- ikinci satır yani üstteki ikili satırdan sonraki satır --> 
+
+      <div class="mb-3">
+        <label for="sorun">Sorun <span class="text-muted">(Opsiyonel)</span></label>
+        <input type="sorun" class="form-control"   value="{{newAnket.sorun}}"  readonly>
+ 
+      </div>
+
+      <div class="mb-3">
+        <label for="address">Sorun kim veya kimler tarafından kaynaklı ?</label>
+        <input type="text" class="form-control"    value="{{newAnket.ana_unsur}}" readonly>
+        <div class="invalid-feedback">
+          Please enter your shipping address.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address2">Hangi guruba dahil ?  </label>
+        <input type="text" class="form-control"    value="{{newAnket.benzerlik}}" readonly>
+      </div>
+
+      <div class="mb-3">
+        <label >Çözüm yolu için önerileriniz <span class="text-muted">(Opsiyonel)</span></label>
+        <textarea class="form-control" id="exampleFormControlTextarea4" rows="9"  readonly>{{newAnket.alinabilecek_onlem}}</textarea>
+      </div>
+
+  
+ 
+ <br><br>
+  
+      
+    </form>
+  </div>
+</div>
+
+ 
+</div>
+
+    
+    
+
+ 
+   
+ 
+</div>
+<script>
+  $(document).ready(function(){
+
+setTimeout(function(){
+
+    $("#alarmdivi").fadeOut("slow", function () {
+
+    $("#alarmdivi").remove();
+
+});
+
+}, 2000);
+
+});
+
+</script>
+{% endblock %}

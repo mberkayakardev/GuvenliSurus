@@ -1,0 +1,139 @@
+
+
+{% extends "common/layout.html" %}
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+
+<div
+  style="z-index: 9999;position:fixed;top:50px;width:90%; text-align: center;margin-top: 20px; margin-left:5%;margin-right:5%;"
+  class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+<br>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Kişisel bilgilerinizi görüntüleyebilirsiniz</h1>
+     
+    <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
+    <h1></h1>
+  </div>
+
+ 
+ 
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .container {
+      max-width: 960px;
+    }
+
+    .lh-condensed { line-height: 1.25; }
+
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+
+    }
+  </style>
+
+
+ 
+ 
+ 
+  <div class="container">
+<div class="py-5 text-center">
+ 
+  <h2>Detay Sayfası </h2>
+  <p class="lead"> Hoşgeldin {{request.user.username}} üyelik bilgilerniz sosyal hesabınızdan alınmaktadır. değişikliklerinizi sosyal hesaplarınızdan yapmanız durumunda sistem otomatik güncellenecektir</p>
+</div>
+
+<div class="row ">
+  
+  <div class="col-md-12 ">
+     
+    <form class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName">Kullanıcı adı</label>
+          <input type="text" class="form-control"  placeholder="" value="{{request.user.username}}" readonly>
+        
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Kayıt olma tarihi</label>
+          <input type="text" class="form-control"  placeholder="" value="{{request.user.date_joined}}"  readonly>
+         
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label >İsim</label>
+          <div class="input-group">
+        
+            <input type="text" class="form-control"  placeholder="enlem" value="{{request.user.first_name}}"  readonly>
+          </div>
+        
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Soyisim</label>
+          <div class="input-group">
+            
+            <input type="text" class="form-control"  value="{{request.user.last_name}}"  readonly>
+          </div>
+        </div>
+      </div>
+      
+ 
+
+      
+       
+
+          <!-- ikinci satır yani üstteki ikili satırdan sonraki satır --> 
+
+      <div class="mb-3">
+        <label for="sorun">E_posta adresiniz </label>
+        <input  class="form-control"  value="{{request.user.email}}"  readonly>
+ 
+      </div>
+ 
+  
+      <div class="mb-3">
+        <label for="sorun">Sisteme son giriş tarihi </label>
+        <input  class="form-control"  value="{{request.user.last_login}}"  readonly>
+ 
+      </div>
+ 
+ 
+ <br><br>
+  
+      
+    </form>
+  </div>
+</div>
+
+ 
+</div>
+
+    
+    
+<button class="btn btn-danger btn-lg btn-block" style="margin-bottom: 10px;"><a style="color: white; text-decoration: none;" href="/user/sil">Kalıcı bir şekilde hesap silmek için tıklayınız</a></button>
+ 
+   
+ 
+</div>
+{% endblock %}

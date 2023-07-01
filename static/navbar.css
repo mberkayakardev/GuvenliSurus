@@ -1,0 +1,65 @@
+﻿ 
+#slidenav a {
+  text-decoration: none;
+  color: white;
+}
+
+#slidenav {
+  width: 50%;
+  margin-top: 15px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ 
+
+
+#slidenav #home {
+  border-top-left-radius: 10px;
+  background-color: #4CAF50;
+
+}
+
+#slidenav #son {
+  border-bottom-left-radius: 10px;
+}
+#slidenav a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+#slidenav a:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+ 
+ 
+
+ 
+
+#slidenav {
+  position: fixed;
+  right: 10px;
+  z-index: 1;
+  display: none;
+  top: 60px;
+}
+
+#b1 {
+
+  position: fixed;
+  top: 10px;
+  margin-right: 10px;
+
+  z-index: 1;
+  display: inline-block;
+  right: 0px !important
+}
+
+
+ 
+
+ 

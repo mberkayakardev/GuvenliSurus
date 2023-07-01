@@ -1,0 +1,80 @@
+{% extends "common/layout.html" %}
+ 
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+
+<div
+  style="z-index: 9999;position:fixed;top:50px;width:90%; text-align: center;margin-top: 20px; margin-left:5%;margin-right:5%;"
+  class="alert alert-danger alert-dismissible" role="alert" id="alarmdivi">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Bildirim Paneli</h1>
+    <hr>
+    <p>Geçmiş Döneme Ait bildirimler için</p>
+    <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
+  </div>
+{% if newAnket %}
+ <table class="table" style="width: 100%;">
+  <thead>
+    <tr>
+      <th scope="col">oluşturma Tarihi</th>
+ 
+      
+      
+      <th scope="col">sorun</th>
+      <th scope="col">kim tarafından kaynaklı</th>
+      <th scope="col">hangi gurub</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+ 
+    </tr>
+  </thead>
+  <tbody>
+     {% for Anket in newAnket %}
+     <tr>
+      <th scope="row"><a href="/anket/detay/{{Anket.id}}"> {{Anket.tarih}}</a></th>
+ 
+      
+      
+      <td>{{Anket.sorun}}</td>
+      <td>{{Anket.ana_unsur}}</td>
+      <td>{{Anket.benzerlik}}</td>
+ 
+      <td><a href="/anket/guncelle/{{Anket.id}}" class="btn btn-success"> Güncelle</a></td>
+      <td><a href="/anket/sil/{{Anket.id}}" class="btn btn-danger"> Sil</a></td>
+ 
+    </tr>
+     {% endfor %}     
+</table>
+{% else %}
+<div class="alert alert-danger"> Henüz bir bildiriminiz yok</div>
+{% endif %}
+
+
+</div>
+<br>
+<script>
+  $(document).ready(function(){
+
+setTimeout(function(){
+
+    $("#alarmdivi").fadeOut("slow", function () {
+
+    $("#alarmdivi").remove();
+
+});
+
+}, 2000);
+
+});
+
+</script>
+{% endblock %}

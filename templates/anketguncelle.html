@@ -1,0 +1,214 @@
+{% extends "common/layout.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .Enlem,
+    .Boylam {
+        display: none;
+    }
+    #id_alinabilecek_onlem{
+    width: 100% !important;
+  
+  }
+    #id_sorun {
+        font-size: 20px;
+        font-style: italic;
+    }
+</style>
+
+<link rel="stylesheet" href="{% static 'anketekle.css'%} ">
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Bildirim GÜNCELLEME SAYFASINA HOŞGELDİN</h1>
+        <p>Bu sayfada sürücüler olarak bildirim güncelleme yaptığımız yerdir.</p>
+
+        <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
+    </div>
+    <form method="POST" id="guncelleForm">
+        {% csrf_token %}
+        <div class="row">
+            {% for field in form %}
+            {% if field.label == "Hangi Guruba Dahil" %}
+            <div class="col-md-12">
+                <label>
+                    <h4 style="font-weight: bold;"> Gruba Dahil</h4>
+                </label><br>
+                <select name="benzerlik" id="Faktor2" required> </select>
+                <div style="display:none">{{form.benzerlik}}</div>
+            </div>
+
+            {% endif %}
+            {% if field.label == "Sorun Kim Tarafından Kaynaklı" %}
+            <div class=" col-md-12">
+                <label>
+                    <h4 style="font-weight: bold;">Sorun Kim Tarafından Kaynaklı </h4>
+                </label><br>
+                <select name="ana_unsur" id="Faktor1" required> </select>
+                <div style="display:none">{{form.ana_unsur}}</div>
+            </div>
+            {% endif %}
+            {% if field.label != "Sorun Kim Tarafından Kaynaklı" and field.label != "Hangi Guruba Dahil" %}
+            <div class="col-md-12 {{field.label}}">
+                <h4 style="font-weight: bold;">
+                    {{ field.label }}<br><br>
+                </h4>
+            </div>
+
+            <div class="col-md-12  {{field.label}}">
+                {{ field }}
+            </div>
+            <br><br>
+
+
+            {% endif %}
+
+            {% endfor %}
+        </div>
+
+        <br><br><br><br>
+        <button class="btn  btn-success btn-lg btn-block" type="submit"> Kaydet</button>
+        <br><br><br><br>
+    </form>
+</div>
+
+
+
+
+<script>
+    data = {
+        "0": {
+            "name": "Sürücü Kusurları",
+            "Faktor": {
+                "0": "Araç hızını yol, hava ve trafiğin gerektirdiği şartlara uydurmamak",
+                "1": "Kavşak,geçit ve kaplamanın dar olduğu yerlerde geçiş önceliğine uymamak",
+                "2": "Şerit izleme ve değiştirme kurallarına uymamak",
+                "3": "Arkadan Çarpma",
+                "4": "Doğrultu değiştirme ve dönüş kurallarına uymama",
+                "5": "Manevraları düzenleyen genel şartlara uymamak",
+                "6": "Trafik işaretçilerine ve görevlilere uymamak",
+                "7": "Taşıt giremez trafik işareti bulunan yerlere girmek",
+                "8": "Trafik güvenliği ile ilgili diğer kurallara uymamak",
+                "9": "Yaya ve okul geçitlerinde yavaşlamamak, yayalara geçiş hakkı vermemek",
+                "10": "Alkollü olarak araç kullanmak",
+                "11": "Aşırı hızla araç kullanmak",
+                "12": "Hatalı şekilde veya yasak olan yerlere park etmek",
+                "13": "Geçme yasağı olan yerlerden geçmek",
+                "14": "Eksik, bozuk veya uygun olmayan araç donanımıyla araç kullanmak ",
+                "15": "Yolcu indirme ve bindirme kurallarına uymamamk ",
+                "14": "Tehlikeli ve aşırı şekilde yükleme yapmak",
+
+            }
+
+        },
+        "1": {
+            "name": "Yaya Kusurları",
+            "Faktor": {
+                "0": "Taşıt yolu üzerinde trafiği tehlikeye düşürücü hareketlerdebulunmak",
+                "1": "Trafik güvenliği ile ilgili diğer kurallara uymamak",
+                "2": "Karşıdan karşıya geçişlerde trafik kuralarına uymamak",
+                "3": "Trafik ikaz işaretlerine uymamak",
+                "4": "Taşıt yoluna girmek",
+
+            }
+        },
+        "2": {
+            "name": "Yolcu Kusurları",
+            "Faktor": {
+                "0": "Emniyet Kemeri takmamak",
+                "1": "Taşıt içerisinde uygunsuz hareketler",
+                "2": "Açık yük üzerinde uygunsuz bulunma",
+                "3": "Habersiz taşıta binmek veya inmek",
+            },
+        },
+        "3": {
+            "name": "Yol Kusurları",
+            "Faktor": {
+                "0": "Gevşek Malzeme",
+                "1": "Münferit Çukur",
+                "2": "Şerit Çökmesi",
+                "3": "Kısmi veya Münferit Çökme",
+                "4": "Düşük Banket",
+                "5": "Buzlanma-Don",
+            },
+        }
+    }
+
+    $(document).ready(function () {
+        $('#Faktor1').append($('<option>', {
+            //          value: "undifend",
+            //          text:  "--- Gelen kapsam Seçiniz ---"
+        }));
+        $.each(data, function (index, value) {
+            $('#Faktor1').append($('<option>', {
+                value: value.name,
+                text: value.name
+            }));
+
+        })
+        var ana_unsur = $('#id_ana_unsur').val()
+        $(`#Faktor1 option[value="${ana_unsur}"]`).attr('selected', 'selected');
+
+        benzerlikListesiDoldur();
+
+        var benzerlik = $('#id_benzerlik').val()
+        $(`#Faktor2 option[value="${benzerlik}"]`).attr('selected', 'selected');
+
+    });
+
+    $('#guncelleForm').submit(function () {
+        $('#id_ana_unsur').val($('#Faktor1').val());
+        $('#id_benzerlik').val($('#Faktor2').val());
+        return true; // return false to cancel form action
+    });
+
+    const benzerlikListesiDoldur = function () {
+        var Faktor = $("#Faktor1").val();
+        if (Faktor == '') {
+            $('#Faktor2').find('option').remove().end().append(
+                '<option selected> ' + data[index].Faktor[0] + '</option>').val();
+        }
+        $.each(data, function (index, value) {
+
+            if (Faktor == value.name) {
+                $('#Faktor2').find('option').remove().end().append(
+                    `<option selected value="${data[index].Faktor[0]}">  ${data[index].Faktor[0]} </option>`
+                ).val();
+
+
+                $.each(value.Faktor, function (index, val) {
+                    if (index == 0) {
+
+                    } else {
+                        $('#Faktor2').append($('<option>', {
+                            value: val,
+                            text: val
+                        }));
+                    }
+                });
+            }
+        })
+
+    }
+
+    $("#Faktor1").change(benzerlikListesiDoldur);
+
+    function getLoc() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPos);
+        } else {
+            //x.innerHTML = "Geolocation is not supported by this browser.";
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPos(position) {
+        $('#id_enlem').val(position.coords.latitude);
+        $('#id_boylam').val(position.coords.longitude);
+    }
+
+    $(document).ready(function () {
+        getLoc();
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,193 @@
+{% load static %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    background-color: #93BFA3;
+
+  }
+</style>
+<link rel="stylesheet" href="{% static 'navbar.css'%} ">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-success " id="buyuknav" style="z-index: 1000000;">
+  <div class="sol">
+    <a class="navbar-brand" href="/"> <img src="{% static 'trafficgift.gif' %}" style="width: 50px" class="px-2">
+      Güvenli
+      Sürüş</a>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#acılannavbar"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span> <!-- Hamburger menüdeki Navbar Açma kapama ikonu-->
+  </button>
+
+  <div class="collapse navbar-collapse" id="acılannavbar">
+    <div class="orta">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/hakkında">Hakkımızda <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item active">
+
+          <a class="nav-link" href="/navigasyon">Navigasyon <span class="sr-only">(current)</span></a>
+        </li>
+
+        <!-- Giriş Çıkış döngülerimiz için yazılan if blogu-->
+        {% if request.user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/logout">Çıkış Yap <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="sag social float-right">
+      <ul class="navbar-nav mr-auto">
+
+        <!-- Giriş Çıkış döngülerimiz için yazılan if blogu-->
+        {% if request.user.is_authenticated %}
+
+        {% else %}
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/giris">Giriş Yap <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+
+        {% if request.user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/giris"> <span class="sr-only">(current)</span></a>
+        </li>
+
+
+
+
+        <!-- Hamburger Dropdown menü kısmı-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Hoşgeldin : {{request.user.username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/user/kullanıcı_arayuzu/">Kullanıcı paneli</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/../anket/anketekle/">Bildirim oluştur</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/user/kisisel/">Bilgilerim</a>
+          </div>
+        </li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Nav Barımız üst ikon menümüz-->
+
+
+<div id="slidenavdivi" style="margin-top: 58px; z-index: 1000000;">
+  <button id="b1" class="btn btn-success"><img id="b1img" style="width: 40px"
+      src="{% static 'trafficgift.gif' %}"></button>
+  <ul class="vertical-menu" id="slidenav">
+    <li><a href="/" id="home"> <i class="fa fa-admin "></i>Ana Sayfa</a></li>
+    <li><a href="/hakkında">Hakkımızda..</a></li>
+    <li><a href="/navigasyon">Navigasyon</a></li>
+    {% if request.user.is_authenticated %}
+    <li><a href="/user/kullanıcı_arayuzu">Hoşgeldin {{request.user.username}}</a></li>
+    <li><a style="background-color: lightcoral;" href="/user/logout" id="son">Çıkış</a></li>
+    {% else %}
+    <li><a href="/user/giris" id="son">Giriş</a></li>
+    {% endif %}
+
+  </ul>
+</div>
+
+<script>
+  $(function () {
+    const titles = ['Güvenli Sürüş 🚗🚙🏎', '#HayatEveSigar...'];
+    var i = 0;
+    setInterval(() => {
+      document.title = titles[i];
+      if (i == 1) i = 0;
+      else i = 1;
+    }, 2000);
+
+
+    window.addEventListener('resize', function (event) {
+      $("#slidenav").fadeOut();
+
+      if (window.innerWidth > 700) {
+        $('#b1').css('display', 'none');
+      } else {
+        $('#b1').css('display', 'inline');
+      }
+
+    });
+
+  });
+
+
+  $(document).mouseup(e => {
+
+    if ($('#b1').is(e.target) || $('#b1img').is(e.target))
+      $(".vertical-menu").fadeToggle();
+    else if (!$('.vertical-menu').is(e.target) && $('.vertical-menu').has(e.target).length === 0) {
+      $(".vertical-menu").fadeOut();
+    }
+
+
+  });
+
+  function myFunction(x) {
+    if (x.matches) { // If media query matches
+      $("#buyuknav").hide()
+      $("#slidenavdivi").show()
+    } else {
+      $("#buyuknav").show()
+      $("#slidenavdivi").hide()
+    }
+  }
+
+  var x = window.matchMedia("(max-width: 700px)")
+  myFunction(x)
+  x.addListener(myFunction)
+</script>

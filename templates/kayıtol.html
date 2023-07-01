@@ -1,0 +1,17 @@
+{% extends "common/layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Kullanıcı kayıt sayfasına hoş geldin</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+    <button type="submit" class="btn-success">Kayıt ol</button>
+    </form>
+</div>
+
+
+{% endblock %}
+ 
